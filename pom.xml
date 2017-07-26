@@ -371,14 +371,7 @@
                                 </goals>
                                 <configuration>
                                     <rules>
-                                        <requireProperty>
-                                            <property>proxy.host</property>
-                                            <message>Environment variable PROXY_HOST is missing, but required!</message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>proxy.port</property>
-                                            <message>Environment variable PROXY_PORT is missing, but required!</message>
-                                        </requireProperty>
+                                        
                                         <requireProperty>
                                             <property>sap.cloud.account</property>
                                             <message>Environment variable SAP_CLOUD_ACCOUNT is missing, but required!</message>
