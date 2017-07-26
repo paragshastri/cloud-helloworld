@@ -20,8 +20,8 @@
     
     <properties>
         <!-- Properties that hold host and port of proxy should you have one - otherwise remove all occurrences of the properties -->
-        <proxy.host>${env.PROXY_HOST}</proxy.host>
-        <proxy.port>${env.PROXY_PORT}</proxy.port>
+        <!-- <proxy.host>${env.PROXY_HOST}</proxy.host>
+        <proxy.port>${env.PROXY_PORT}</proxy.port> -->
 
         <!-- Properties that hold information on the location and version of the SAP HANA Cloud Platform SDK -->
         <sap.cloud.sdk.path>${project.build.directory}/sdk</sap.cloud.sdk.path>
@@ -274,14 +274,7 @@
                                 </goals>
                                 <configuration>
                                     <rules>
-                                        <requireProperty>
-                                            <property>proxy.host</property>
-                                            <message>Environment variable PROXY_HOST is missing, but required!</message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>proxy.port</property>
-                                            <message>Environment variable PROXY_PORT is missing, but required!</message>
-                                        </requireProperty>
+                                        
                                     </rules>
                                 </configuration>
                             </execution>
@@ -324,10 +317,6 @@
                             <httpsPort>${local.server.https.port}</httpsPort>
                             <jmxPort>${local.server.jmx.port}</jmxPort>
                             <ajpPort>${local.server.ajp.port}</ajpPort>
-                            <httpProxyHost>${proxy.host}</httpProxyHost>
-                            <httpProxyPort>${proxy.port}</httpProxyPort>
-                            <httpsProxyHost>${proxy.host}</httpsProxyHost>
-                            <httpsProxyPort>${proxy.port}</httpsProxyPort>
                             <waitUrl>http://${local.server.host}:${local.server.http.port}/${project.artifactId}/</waitUrl>
                             <source>${project.build.directory}/${project.artifactId}.war</source>
                         </configuration>
@@ -342,7 +331,7 @@
                                     <goal>integration-test</goal>
                                 </goals>
                                 <configuration>
-                                    <argLine>-Dhttp.proxyHost=${proxy.host} -Dhttp.proxyPort=${proxy.port} -Dhttps.proxyHost=${proxy.host} -Dhttps.proxyPort=${proxy.port}</argLine>
+                                    
                                     <systemPropertyVariables>
                                         <integration.test.server.url>http://${local.server.host}:${local.server.http.port}</integration.test.server.url>
                                     </systemPropertyVariables>
@@ -439,10 +428,7 @@
                             <password>${sap.cloud.password}</password>
                             <source>${project.build.directory}/${project.artifactId}.war</source>
                             <synchronous>true</synchronous>
-                            <consoleHttpProxyHost>${proxy.host}</consoleHttpProxyHost>
-                            <consoleHttpProxyPort>${proxy.port}</consoleHttpProxyPort>
-                            <consoleHttpsProxyHost>${proxy.host}</consoleHttpsProxyHost>
-                            <consoleHttpsProxyPort>${proxy.port}</consoleHttpsProxyPort>
+                            
                         </configuration>
                     </plugin>
                     <plugin>
@@ -455,7 +441,7 @@
                                     <goal>integration-test</goal>
                                 </goals>
                                 <configuration>
-                                    <argLine>-Dhttp.proxyHost=${proxy.host} -Dhttp.proxyPort=${proxy.port} -Dhttps.proxyHost=${proxy.host} -Dhttps.proxyPort=${proxy.port}</argLine>
+                                    
                                     <systemPropertyVariables>
                                         <sap.cloud.username>${sap.cloud.username}</sap.cloud.username>
                                         <sap.cloud.password>${sap.cloud.password}</sap.cloud.password>
